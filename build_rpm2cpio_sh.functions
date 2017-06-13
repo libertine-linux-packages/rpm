@@ -1,0 +1,20 @@
+# This file is part of libertine linux's package rpm. It is subject to the license terms in the COPYRIGHT file found in the top-level directory of this distribution and at https://raw.githubusercontent.com/libertine-linux-packages/rpm/master/COPYRIGHT. No part of libertine linux's package rpm, including this file, may be copied, modified, propagated, or distributed except according to the terms contained in the COPYRIGHT file.
+# Copyright © 2016 The developers of libertine linux's package rpm. See the COPYRIGHT file in the top-level directory of this distribution and at https://raw.githubusercontent.com/libertine-linux-packages/rpm/master/COPYRIGHT.
+
+
+variant=upstream
+
+build_provides 'rpm2cpio.sh'
+
+depends build_busybox
+build_needs sh
+
+build_needs mkdir cp chmod
+libertine_compile_build_rpm2cpio_sh()
+{
+	mkdir -m 0755 -p "$(libertine_public_outputBuildSysrootPath)"/usr/bin
+	cp "$(libertine_public_sourcePath)"/scripts/rpm2cpio.sh "$(libertine_public_outputBuildSysrootPath)"/usr/bin
+	chmod 0755 "$(libertine_public_outputBuildSysrootPath)"/usr/bin/rpm2cpio.sh
+	
+	libertine_public_adjustShaBangAllExecutableFilesInPath  "$(libertine_public_outputBuildSysrootPath)"/usr/bin
+}
