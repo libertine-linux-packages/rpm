@@ -2,4 +2,3 @@
 	path = upstream
 	url = https://github.com/libertine-linux-clones/rpm.git
 	branch = master
-	libertine-linux-upstream = https://github.com/rpm-software-management/rpm.git
